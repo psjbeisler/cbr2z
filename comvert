@@ -10,7 +10,7 @@ INPUT="cbr"
 OUTPUT="cbz"
 
 ## User Options
-while getopts s:i:o:f:l opt; do
+while getopts s:i:o:f:l:h opt; do
 	case $opt in
 	s) # Source directory
 		SOURCE=$OPTARG
@@ -27,10 +27,23 @@ while getopts s:i:o:f:l opt; do
 	l) # Log suspicious files locally
 		LOCAL="1"
 		;;
+	h) # Help dialog
+		HELP="1"
+		;;
 	esac
 done
 
 shift $((OPTIND - 1))
+
+if [[ "$HELP" == "1" ]]; then
+	echo "-s [ source directory ]
+-i [ input file type {cbr,cbz,cbt,cb7} ]
+-o [ output file type {cbz,cbt,cb7} ]
+	7-Zip doesn't support .rar ouput
+-f [ single filename ]
+-l [ log anything suspicious ]"
+	exit 0
+fi
 
 ## Check source folder
 if [[ "$SOURCE" != /* ]]; then
