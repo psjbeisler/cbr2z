@@ -1,3 +1,7 @@
+
+## This project has moved to:  
+### https://gitlab.com/psjbeisler/comvert  
+
 comvert
 =====
 A quick bash script to batch convert digital Comic Books to differnt formats.
